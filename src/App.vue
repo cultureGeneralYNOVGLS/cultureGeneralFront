@@ -28,29 +28,29 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="/login"
         target="_blank"
         text
       >
-        <span class="mr-2">Latest Release</span>
+        <span class="mr-2">Connexion</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <Game/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Game from './components/game.vue';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Game,
   },
 
   data: () => ({
