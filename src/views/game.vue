@@ -14,7 +14,7 @@
         <h1 class="display-2 font-weight-bold mb-3">
           Play Game 
         </h1>
-        <a> Create a Game</a>
+        <a href="/about"> Create a Game</a>
       </v-col>
 
       <v-col cols="12">
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import GameCard from "./GameCard.vue";
+  import GameCard from "../components/GameCard.vue";
 
 
   export default {

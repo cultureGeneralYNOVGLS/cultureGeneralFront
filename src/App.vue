@@ -1,10 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -25,33 +21,29 @@
         />
       </div>
 
+      <div id="nav">
+        <router-link to="/">Home</router-link>
+        <router-link to="/about">About</router-link>
+      </div>
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="/login"
-        target="_blank"
-        text
-      >
+      <v-btn href="/login" target="_blank" text>
         <span class="mr-2">Connexion</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
 
     <v-main>
-      <Game/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Game from './components/game.vue';
-
 export default {
-  name: 'App',
+  name: "App",
 
-  components: {
-    Game,
-  },
+  components: {},
 
   data: () => ({
     //
