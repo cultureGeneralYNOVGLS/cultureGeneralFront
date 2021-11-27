@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Game from '../views/game'
+import ListGame from '../views/ListGame'
+import Game from '../views/Game'
+import CreateGame from '../views/CreateGame'
 
 Vue.use(VueRouter)
 
@@ -8,8 +10,19 @@ const routes = [
   {
     path: '/',
     name: 'index',
+    component: ListGame
+  },
+  {
+    path: '/game/:_id',
+    name: 'game',
     component: Game
   },
+  {
+    path: '/create',
+    name: 'create',
+    component: CreateGame
+  },
+  
   {
     path: '/about',
     name: 'About',

@@ -48,5 +48,8 @@ export default {
   data: () => ({
     //
   }),
+  mounted() {
+    localStorage.idUser = 'tom';
+  }
 };
 </script>
