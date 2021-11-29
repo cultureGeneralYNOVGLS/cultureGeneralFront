@@ -26,8 +26,11 @@
         <router-link to="/about">About</router-link>
       </div>
       <v-spacer></v-spacer>
-
-      <v-btn href="/login" target="_blank" text>
+      <v-btn href="/" text>
+        <span class="mr-2">Jouer</span>
+        <v-icon>mdi-play-circle-outline</v-icon>
+      </v-btn>
+      <v-btn href="/welcome" text>
         <span class="mr-2">Connexion</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
@@ -49,7 +52,25 @@ export default {
     //
   }),
   mounted() {
-    localStorage.idUser = 'tom';
-  }
+    if (localStorage.idUser && localStorage.tokenUser) {
+      //localStorage.idUser = 'tom';
+
+      fetch(`http://localhost:7512/api/user/auth`, {
+        method: "POST",
+        body: JSON.stringify({ token: localStorage.tokenUser }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((res) => {
+        if (res.status === "400") {
+          localStorage.idUser = null;
+          localStorage.tokenUser = null;
+          this.$router.push(`welcome`);
+        }
+      });
+    } else {
+      this.$router.push(`welcome`);
+    }
+  },
 };
 </script>

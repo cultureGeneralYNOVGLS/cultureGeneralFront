@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import ListGame from '../views/ListGame'
 import Game from '../views/Game'
 import CreateGame from '../views/CreateGame'
+import LoginSigin from '../views/LoginSigin'
 
 Vue.use(VueRouter)
 
@@ -22,8 +23,12 @@ const routes = [
     name: 'create',
     component: CreateGame
   },
-  
   {
+    path: '/welcome',
+    name: 'welcome',
+    component: LoginSigin
+  },
+    {
     path: '/about',
     name: 'About',
     // route level code-splitting

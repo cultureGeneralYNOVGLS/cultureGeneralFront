@@ -20,11 +20,22 @@
       </v-col>
     </v-row>
 
-  <v-fab-transition>
-    <v-btn href="/create" v-show="!hidden" color="pink" dark fixed outlined x-large bottom right fab>
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
-  </v-fab-transition>
+    <v-fab-transition>
+      <v-btn
+        href="/create"
+        v-show="!hidden"
+        color="pink"
+        dark
+        fixed
+        outlined
+        x-large
+        bottom
+        right
+        fab
+      >
+        <v-icon>mdi-plus</v-icon>
+      </v-btn>
+    </v-fab-transition>
   </v-container>
 </template>
 
@@ -42,13 +53,23 @@ export default {
   },
   methods: {
     getGames() {
-      fetch(`http://localhost:7510/game/user/${localStorage.idUser}`).then(
-        (res) => {
+      fetch(`http://localhost:7510/game/user/${localStorage.idUser}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.tokenUser}`,
+        },
+      }).then((res) => {
+
+        if (res.status === 401) {
+          this.$router.push(`/welcome`)
+        }
+        else {
           res.json().then((games) => {
             this.game_list = games;
           });
         }
-      );
+
+        
+      });
     },
   },
   mounted() {

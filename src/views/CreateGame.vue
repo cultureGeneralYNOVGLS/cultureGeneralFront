@@ -151,19 +151,27 @@ export default {
       this.$refs.observer.reset();
     },
     getCategories() {
-      fetch("http://localhost:7510/category/").then((res) => {
-        res.json().then((games) => {
-          this.categories = games;
-        });
+      fetch("http://localhost:7510/category/", {
+        headers: {
+          Authorization: `Bearer ${localStorage.tokenUser}`,
+        },
+      }).then((res) => {
+        if (res.status === 401) {
+          this.$router.push(`/welcome`);
+        } else {
+          res.json().then((games) => {
+            this.categories = games;
+          });
+        }
       });
     },
     sendGame() {
       let body = {
-        name:this.name,
-        difficulty:this.difficulty,
-        numberQuestions:this.numberQuestions,
-        idCategory:this.select,
-        idUser:localStorage.idUser
+        name: this.name,
+        difficulty: this.difficulty,
+        numberQuestions: this.numberQuestions,
+        idCategory: this.select,
+        idUser: localStorage.idUser,
       };
 
       fetch(`http://localhost:7510/game`, {
@@ -171,11 +179,16 @@ export default {
         body: JSON.stringify(body),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.tokenUser}`,
         },
       }).then((res) => {
-        res.json().then((game) => {
-          this.$router.push(`game/${game._id}`) 
-        });
+        if (res.status === 401) {
+          this.$router.push(`/welcome`);
+        } else {
+          res.json().then((game) => {
+            this.$router.push(`game/${game._id}`);
+          });
+        }
       });
     },
   },

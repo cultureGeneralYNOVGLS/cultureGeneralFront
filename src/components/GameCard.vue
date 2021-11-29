@@ -33,8 +33,16 @@ export default {
         if (result.isConfirmed) {
           fetch(`http://localhost:7510/game/${game._id}`, {
             method: "DELETE",
-          }).then(() => {
-              document.getElementById(`article_` + game._id).style.display = "none";
+            headers: {
+              Authorization: `Bearer ${localStorage.tokenUser}`,
+            },
+          }).then((res) => {
+            if (res.status === 401) {
+              this.$router.push(`/welcome`);
+            } else {
+              document.getElementById(`article_` + game._id).style.display =
+                "none";
+            }
           });
         } else if (result.isDenied) {
           //Pas de suppression

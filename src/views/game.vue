@@ -68,11 +68,19 @@ export default {
   components: {},
   methods: {
     getGame(_id) {
-      fetch(`http://localhost:7510/game/${_id}`).then((res) => {
-        res.json().then((game) => {
-          this.game = game;
-          this.getInformationsGame();
-        });
+      fetch(`http://localhost:7510/game/${_id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.tokenUser}`,
+        },
+      }).then((res) => {
+        if (res.status === 401) {
+          this.$router.push(`/welcome`);
+        } else {
+          res.json().then((game) => {
+            this.game = game;
+            this.getInformationsGame();
+          });
+        }
       });
     },
     sendAnswer(game, answer) {
@@ -81,12 +89,17 @@ export default {
         body: JSON.stringify({ answer: answer }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.tokenUser}`,
         },
       }).then((res) => {
-        res.json().then((game) => {
-          this.game = game;
-          this.getInformationsGame();
-        });
+        if (res.status === 401) {
+          this.$router.push(`/welcome`);
+        } else {
+          res.json().then((game) => {
+            this.game = game;
+            this.getInformationsGame();
+          });
+        }
       });
     },
     getInformationsGame() {
