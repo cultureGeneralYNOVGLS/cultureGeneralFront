@@ -7,7 +7,6 @@
         </h1>
       </v-col>
     </v-row>-->
-
     <v-row class="text-center">
       <a href="/"> Retour</a>
 
