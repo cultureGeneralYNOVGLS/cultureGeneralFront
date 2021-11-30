@@ -30,8 +30,8 @@
         <span class="mr-2">Jouer</span>
         <v-icon>mdi-play-circle-outline</v-icon>
       </v-btn>
-      <v-btn href="/welcome" text>
-        <span class="mr-2">Connexion</span>
+      <v-btn href="/authentification" text>
+        <span class="mr-2">{{label}}</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
     </v-app-bar>
@@ -49,9 +49,10 @@ export default {
   components: {},
 
   data: () => ({
-    //
+    label:'Connexion'
   }),
   mounted() {
+    
     if (localStorage.idUser && localStorage.tokenUser) {
       //localStorage.idUser = 'tom';
 
@@ -62,14 +63,19 @@ export default {
           "Content-type": "application/json; charset=UTF-8",
         },
       }).then((res) => {
-        if (res.status === "400") {
+        if (res.status === 400) {
           localStorage.idUser = null;
           localStorage.tokenUser = null;
-          this.$router.push(`welcome`);
+          this.label = 'Connexion';
+          this.$router.push(`authentification`);
+        }
+        else {
+          this.label = 'Déconnexion';
         }
       });
     } else {
-      this.$router.push(`welcome`);
+      this.label = 'Connexion';
+      this.$router.push(`authentification`);
     }
   },
 };

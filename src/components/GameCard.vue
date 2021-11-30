@@ -38,7 +38,7 @@ export default {
             },
           }).then((res) => {
             if (res.status === 401) {
-              this.$router.push(`/welcome`);
+              this.$router.push(`/authentification`);
             } else {
               document.getElementById(`article_` + game._id).style.display =
                 "none";

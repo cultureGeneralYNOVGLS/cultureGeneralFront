@@ -156,8 +156,9 @@ export default {
           Authorization: `Bearer ${localStorage.tokenUser}`,
         },
       }).then((res) => {
+        console.log(res.status, 'sqqsqs');
         if (res.status === 401) {
-          this.$router.push(`/welcome`);
+          this.$router.push(`/authentification`);
         } else {
           res.json().then((games) => {
             this.categories = games;
@@ -183,7 +184,7 @@ export default {
         },
       }).then((res) => {
         if (res.status === 401) {
-          this.$router.push(`/welcome`);
+          this.$router.push(`/authentification`);
         } else {
           res.json().then((game) => {
             this.$router.push(`game/${game._id}`);

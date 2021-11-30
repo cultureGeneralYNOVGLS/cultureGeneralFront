@@ -33,5 +33,9 @@ export default {
   }),
 
   methods: {},
+  mounted() {
+    localStorage.idUser = null;
+    localStorage.tokenUser = null;
+  },
 };
 </script>

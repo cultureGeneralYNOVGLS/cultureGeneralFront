@@ -60,7 +60,7 @@ export default {
       }).then((res) => {
 
         if (res.status === 401) {
-          this.$router.push(`/welcome`)
+          this.$router.push(`/authentification`)
         }
         else {
           res.json().then((games) => {

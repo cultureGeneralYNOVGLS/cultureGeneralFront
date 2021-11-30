@@ -24,8 +24,8 @@ const routes = [
     component: CreateGame
   },
   {
-    path: '/welcome',
-    name: 'welcome',
+    path: '/authentification',
+    name: 'authentification',
     component: LoginSigin
   },
     {
