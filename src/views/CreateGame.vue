@@ -175,7 +175,7 @@ export default {
         idUser: localStorage.idUser,
       };
 
-      fetch(`http://localhost:7510/game`, {
+      fetch(`http://localhost:7510/agent/game`, {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
