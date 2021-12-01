@@ -103,7 +103,7 @@ export default {
         password: this.password,
       };
 
-      fetch(`http://localhost:7512/api/user/login`, {
+      fetch(`http://localhost:3001/api/user/login`, {
         method: "POST",
         body: JSON.stringify(user),
         headers: {
