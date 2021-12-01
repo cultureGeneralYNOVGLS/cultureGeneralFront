@@ -19,9 +19,7 @@
       <v-col cols="12" v-else>
         <v-card width="400">
           <v-card-text>
-            <div class="font-weight-bold ml-8 mb-2">
-              Game {{ game.name }} => Score : {{ game.score }}
-            </div>
+            <div class="font-weight-bold ml-8 mb-2">Game {{ game.name }}</div>
 
             <div class="font-weight-bold ml-8 mb-2">
               Question :
@@ -62,6 +60,8 @@ export default {
     goodAnswer: "",
     question: "",
     answers: [],
+    loopVar: null,
+    keepGoing: true,
     randomColor: ["purple", "orange", "blue", "yellow", "red", "green", "rose"],
   }),
   components: {},
@@ -77,13 +77,20 @@ export default {
         } else {
           res.json().then((game) => {
             this.game = game;
-            this.getInformationsGame();
+
+            if (this.game.status === 'finish') {
+              clearTimeout(this.loopVar);
+            }
+            else {
+              this.getInformationsGame();
+            }
+
           });
         }
       });
     },
     sendAnswer(game, answer) {
-      fetch(`http://localhost:7510/game/${game._id}`, {
+      fetch(`http://localhost:7510/agent/game/${game._id}`, {
         method: "PATCH",
         body: JSON.stringify({ answer: answer }),
         headers: {
@@ -94,10 +101,27 @@ export default {
         if (res.status === 401) {
           this.$router.push(`/authentification`);
         } else {
-          res.json().then((game) => {
+          /*res.json().then((game) => {
             this.game = game;
             this.getInformationsGame();
-          });
+          });*/
+          if (this.game.numberQuestions > this.game.progressionQuestions) {
+            this.game.progressionQuestions += 1;
+            console.log(
+              "partie non fini",
+              this.game.numberQuestions,
+              this.game.progressionQuestions
+            );
+            this.getInformationsGame();
+            this.game.status = "in progress";
+          } else {
+            
+            this.loopVar = setTimeout(() => {
+              this.getGame(this.$route.params._id);
+            }, 5000);
+
+            
+          }
         }
       });
     },

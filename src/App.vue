@@ -20,11 +20,7 @@
           width="100"
         />
       </div>
-
-      <div id="nav">
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-      </div>
+      
       <v-spacer></v-spacer>
       <v-btn href="/" text>
         <span class="mr-2">Jouer</span>
