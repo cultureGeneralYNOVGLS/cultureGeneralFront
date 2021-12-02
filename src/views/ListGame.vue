@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     getGames() {
-      fetch(`http://localhost:3000/api/game/user/${localStorage.idUser}`, {
+      fetch(`http://localhost:3000/api/game/${localStorage.idUser}`, {
         headers: {
           Authorization: `Bearer ${localStorage.tokenUser}`,
         },
