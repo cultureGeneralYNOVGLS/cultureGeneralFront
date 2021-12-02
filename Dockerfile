@@ -1,9 +1,8 @@
-FROM node:lts-alpine as build-stage
+FROM node:lts-alpine
+USER root
+RUN mkdir /app
+COPY . /app
 WORKDIR /app
-COPY package*.json ./
 RUN npm install
-COPY . .
-RUN npm run build
-
-FROM bitnami/nginx:latest as production-stage
-COPY --from=build-stage /app/dist /app
+ENTRYPOINT [ "npm" ]
+CMD [ "run", "serve" ]
