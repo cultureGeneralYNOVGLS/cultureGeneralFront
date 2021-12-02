@@ -151,7 +151,7 @@ export default {
       this.$refs.observer.reset();
     },
     getCategories() {
-      fetch("http://localhost:3000/api/game/category/", {
+      fetch("http://localhost:3000/api/category/", {
         headers: {
           Authorization: `Bearer ${localStorage.tokenUser}`,
         },

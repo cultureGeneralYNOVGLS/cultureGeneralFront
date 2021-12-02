@@ -26,6 +26,10 @@
         <span class="mr-2">Jouer</span>
         <v-icon>mdi-play-circle-outline</v-icon>
       </v-btn>
+      <v-btn href="/stats" text>
+        <span class="mr-2">Statistique</span>
+        <v-icon>mdi-play-circle-outline</v-icon>
+      </v-btn>
       <v-btn href="/authentification" text>
         <span class="mr-2">{{label}}</span>
         <v-icon>mdi-open-in-new</v-icon>
