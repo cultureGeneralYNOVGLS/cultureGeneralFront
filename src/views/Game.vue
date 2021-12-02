@@ -67,7 +67,7 @@ export default {
   components: {},
   methods: {
     getGame(_id) {
-      fetch(`http://localhost:3000/game/${_id}`, {
+      fetch(`http://localhost:3000/api/game/${_id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.tokenUser}`,
         },
@@ -90,7 +90,7 @@ export default {
       });
     },
     sendAnswer(game, answer) {
-      fetch(`http://localhost:3000/agent/game/${game._id}`, {
+      fetch(`http://localhost:3000/api/game/agent/${game._id}`, {
         method: "PATCH",
         body: JSON.stringify({ answer: answer }),
         headers: {

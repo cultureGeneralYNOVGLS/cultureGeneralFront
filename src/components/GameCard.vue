@@ -31,7 +31,7 @@ export default {
         denyButtonText: `Non`,
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:3000/game/${game._id}`, {
+          fetch(`http://localhost:3000/api/game/${game._id}`, {
             method: "DELETE",
             headers: {
               Authorization: `Bearer ${localStorage.tokenUser}`,

@@ -151,7 +151,7 @@ export default {
       this.$refs.observer.reset();
     },
     getCategories() {
-      fetch("http://localhost:3000/category/", {
+      fetch("http://localhost:3000/api/game/category/", {
         headers: {
           Authorization: `Bearer ${localStorage.tokenUser}`,
         },
@@ -175,7 +175,7 @@ export default {
         idUser: localStorage.idUser,
       };
 
-      fetch(`http://localhost:3000/game`, {
+      fetch(`http://localhost:3000/api/game`, {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
