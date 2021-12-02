@@ -140,7 +140,7 @@ export default {
         first_name:this.firstName
       };
 
-      fetch(`http://localhost:7512/api/user`, {
+      fetch(`http://localhost:3001/api/user`, {
         method: "POST",
         body: JSON.stringify(user),
         headers: {

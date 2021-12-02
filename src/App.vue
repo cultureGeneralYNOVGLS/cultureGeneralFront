@@ -52,7 +52,7 @@ export default {
     if (localStorage.idUser && localStorage.tokenUser) {
       //localStorage.idUser = 'tom';
 
-      fetch(`http://localhost:7512/api/user/auth`, {
+      fetch(`http://localhost:3001/api/user/auth`, {
         method: "POST",
         body: JSON.stringify({ token: localStorage.tokenUser }),
         headers: {

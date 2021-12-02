@@ -67,7 +67,7 @@ export default {
   components: {},
   methods: {
     getGame(_id) {
-      fetch(`http://localhost:7510/game/${_id}`, {
+      fetch(`http://localhost:3000/game/${_id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.tokenUser}`,
         },
