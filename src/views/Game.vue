@@ -90,7 +90,7 @@ export default {
       });
     },
     sendAnswer(game, answer) {
-      fetch(`http://localhost:7510/agent/game/${game._id}`, {
+      fetch(`http://localhost:3000/agent/game/${game._id}`, {
         method: "PATCH",
         body: JSON.stringify({ answer: answer }),
         headers: {
